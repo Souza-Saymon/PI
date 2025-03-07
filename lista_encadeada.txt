@@ -1,0 +1,19 @@
+public class Main {
+    public static void main(String[] args) {
+        ListaEncadeada lista = new ListaEncadeada();
+
+        // Adiciona elementos
+        lista.adicionarNoFinal(10.5);
+        lista.adicionarNoFinal(20.3);
+        lista.adicionarNoInicio(5.2);
+        lista.adicionarNaPosicao(15.1, 2);
+
+        // Exibe a lista
+        System.out.println("Lista: " + lista.toString());
+        // Saída: Lista: 5.2 -> 15.1 -> 10.5 -> 20.3 -> null
+
+        // Exibe o tamanho da lista
+        System.out.println("Tamanho da lista: " + lista.obterTamanho());
+        // Saída: Tamanho da lista: 4
+    }
+}

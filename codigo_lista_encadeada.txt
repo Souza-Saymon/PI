@@ -1,0 +1,93 @@
+public class ListaEncadeada {
+
+    private No primeiro;
+
+    public ListaEncadeada() {
+        this.primeiro = null;
+    }
+
+    public boolean estaVazia() {
+        return this.primeiro == null;
+    }
+
+    public boolean adicionarNoInicio(double valor) {
+        No novoNo = new No(valor);
+        novoNo.setProximo(this.primeiro);
+        this.primeiro = novoNo;
+        return true;
+    }
+
+    public boolean adicionarNoFinal(double valor) {
+        if (estaVazia()) {
+            return adicionarNoInicio(valor);
+        }
+
+        No novoNo = new No(valor);
+        No ultimoNo = obterUltimoNo();
+        ultimoNo.setProximo(novoNo);
+        return true;
+    }
+
+    public boolean adicionarNaPosicao(double valor, int posicao) {
+        if (posicao < 1 || posicao > obterTamanho() + 1) {
+            return false;
+        }
+
+        if (posicao == 1) {
+            return adicionarNoInicio(valor);
+        }
+
+        No noAnterior = this.primeiro;
+        for (int i = 1; i < posicao - 1; i++) {
+            noAnterior = noAnterior.getProximo();
+        }
+
+        No novoNo = new No(valor);
+        novoNo.setProximo(noAnterior.getProximo());
+        noAnterior.setProximo(novoNo);
+        return true;
+    }
+
+    private No obterUltimoNo() {
+        if (estaVazia()) {
+            return null;
+        }
+
+        No noAtual = this.primeiro;
+        while (noAtual.getProximo() != null) {
+            noAtual = noAtual.getProximo();
+        }
+        return noAtual;
+    }
+
+    public int obterTamanho() {
+        if (estaVazia()) {
+            return 0;
+        }
+
+        int tamanho = 1;
+        No noAtual = this.primeiro;
+        while (noAtual.getProximo() != null) {
+            noAtual = noAtual.getProximo();
+            tamanho++;
+        }
+        return tamanho;
+    }
+
+    @Override
+    public String toString() {
+        if (estaVazia()) {
+            return "Lista vazia";
+        }
+
+        StringBuilder resultado = new StringBuilder();
+        No noAtual = this.primeiro;
+
+        while (noAtual != null) {
+            resultado.append(noAtual.getValor()).append(" -> ");
+            noAtual = noAtual.getProximo();
+        }
+        resultado.append("null");
+        return resultado.toString();
+    }
+}

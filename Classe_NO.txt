@@ -1,0 +1,29 @@
+
+public class No {
+
+    private double valor; // Valor armazenado no nó
+    private No proximo;   // Referência para o próximo nó
+
+    // Construtor
+    public No(double valor) {
+        this.valor = valor;
+        this.proximo = null;
+    }
+
+    // Getters e Setters
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public No getProximo() {
+        return proximo;
+    }
+
+    public void setProximo(No proximo) {
+        this.proximo = proximo;
+    }
+}
